@@ -70,6 +70,14 @@ const LinkedListFactory = function(headValue = null) {
     return at(endIndex)
   }
 
+  const contains = (value) => {
+    for (let i = 0; i < length(); i++) {
+      if (at(i).value === value) return true
+      console.log('list', at(i))
+    }
+    return false
+  }
+
   return {
     append,
     head,
@@ -77,7 +85,8 @@ const LinkedListFactory = function(headValue = null) {
     length,
     tail,
     at,
-    pop
+    pop,
+    contains
   }
 }
 
@@ -97,5 +106,5 @@ list.prepend('1')
 console.log(list.head)
 console.log(list.length())
 console.log(list.at(0))
-console.log(list.pop())
 console.log(list.head)
+console.log(list.contains(3))
