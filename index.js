@@ -22,7 +22,7 @@ const LinkedListFactory = function(headValue = null) {
   }
 
   const length = () => {
-    let count = 0
+    let count = 1
     let currentNode = head
     while (currentNode.nextNode !== null) {
       currentNode = currentNode.nextNode
@@ -64,13 +64,20 @@ const LinkedListFactory = function(headValue = null) {
     return "not found!"
   }
 
+  const pop = () => {
+    const endIndex = length() - 2
+    at(endIndex).nextNode = null
+    return at(endIndex)
+  }
+
   return {
     append,
     head,
     prepend,
     length,
     tail,
-    at
+    at,
+    pop
   }
 }
 
@@ -85,9 +92,10 @@ const list = LinkedListFactory('head!')
 list.prepend('3')
 list.prepend('2')
 list.prepend('1')
-list.append('4')
 
 
 console.log(list.head)
 console.log(list.length())
-console.log(list.at(4))
+console.log(list.at(0))
+console.log(list.pop())
+console.log(list.head)
