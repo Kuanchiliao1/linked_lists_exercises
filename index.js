@@ -73,7 +73,6 @@ const LinkedListFactory = function(headValue = null) {
   const contains = (value) => {
     for (let i = 0; i < length(); i++) {
       if (at(i).value === value) return true
-      console.log('list', at(i))
     }
     return false
   }
@@ -86,6 +85,13 @@ const LinkedListFactory = function(headValue = null) {
     console.log(str.slice(0, -3))
   }
 
+  const findIndex = (value) => {
+    for (let i = 0; i < length(); i++) {
+      if (at(i).value === value) return i
+    }
+    return "No matches!"
+  }
+
   return {
     append,
     head,
@@ -95,7 +101,8 @@ const LinkedListFactory = function(headValue = null) {
     at,
     pop,
     contains,
-    toString
+    toString,
+    findIndex
   }
 }
 
@@ -118,3 +125,4 @@ console.log(list.at(0))
 console.log(list.head)
 console.log(list.contains(3))
 console.log(list.toString())
+console.log(list.findIndex('3'))
