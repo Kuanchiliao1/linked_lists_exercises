@@ -78,6 +78,14 @@ const LinkedListFactory = function(headValue = null) {
     return false
   }
 
+  const toString = () => {
+    let str = ''
+    for (let i = 0; i < length(); i++) {
+      str += `( ${at(i).value} ) =>`
+    }
+    console.log(str.slice(0, -3))
+  }
+
   return {
     append,
     head,
@@ -86,7 +94,8 @@ const LinkedListFactory = function(headValue = null) {
     tail,
     at,
     pop,
-    contains
+    contains,
+    toString
   }
 }
 
@@ -108,3 +117,4 @@ console.log(list.length())
 console.log(list.at(0))
 console.log(list.head)
 console.log(list.contains(3))
+console.log(list.toString())
