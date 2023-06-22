@@ -46,7 +46,7 @@ const LinkedListFactory = function(headValue = null) {
     return currentNode
   }
 
-  const findIndex = (index) => {
+  const at = (index) => {
     if (index === 0) return head
     let counter = 0;
     let currentNode = head;
@@ -70,7 +70,7 @@ const LinkedListFactory = function(headValue = null) {
     prepend,
     length,
     tail,
-    findIndex
+    at
   }
 }
 
@@ -90,4 +90,4 @@ list.append('4')
 
 console.log(list.head)
 console.log(list.length())
-console.log(list.findIndex(4))
+console.log(list.at(4))
