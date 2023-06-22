@@ -21,9 +21,15 @@ const LinkedListFactory = function() {
     // next = next.next1
   }
 
+  const prepend = (value) => {
+    const nextNode = head.nextNode
+    head.nextNode = NodeFactory(value, nextNode)
+  }
+
   return {
     append,
-    head
+    head,
+    prepend
   }
 }
 
@@ -38,6 +44,7 @@ const list = LinkedListFactory()
 list.append(200)
 list.append(300)
 list.append(400)
+list.prepend('stuff')
 
 
 console.log(list.head)
