@@ -21,6 +21,17 @@ const LinkedListFactory = function() {
     // next = next.next1
   }
 
+  const length = () => {
+    let count = 0
+    let currentNode = head
+    while (currentNode.nextNode !== null) {
+      currentNode = currentNode.nextNode
+      count++
+    }
+
+    return count
+  }
+
   const prepend = (value) => {
     const nextNode = head.nextNode
     head.nextNode = NodeFactory(value, nextNode)
@@ -29,22 +40,24 @@ const LinkedListFactory = function() {
   return {
     append,
     head,
-    prepend
+    prepend,
+    length
   }
 }
 
 const NodeFactory = (value = null, nextNode = null) => {
   return {
     value,
-    nextNode
+    nextNode,
   }
 }
 
 const list = LinkedListFactory()
-list.append(200)
-list.append(300)
-list.append(400)
 list.prepend('stuff')
+list.prepend('stuff1')
+list.prepend('stuff1')
+list.prepend('stuff1')
 
 
 console.log(list.head)
+console.log(list.length())
