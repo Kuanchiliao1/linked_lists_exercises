@@ -1,5 +1,5 @@
-const LinkedListFactory = function() {
-  let head = NodeFactory(null, null)
+const LinkedListFactory = function(headValue = null) {
+  let head = NodeFactory(headValue)
 
   const append = (value) => {
     if (head.nextNode === null) {
@@ -37,11 +37,40 @@ const LinkedListFactory = function() {
     head.nextNode = NodeFactory(value, nextNode)
   }
 
+  const tail = () => {
+    let currentNode = head
+    while (currentNode.nextNode !== null) {
+      currentNode = currentNode.nextNode
+    }
+    
+    return currentNode
+  }
+
+  const findIndex = (index) => {
+    if (index === 0) return head
+    let counter = 0;
+    let currentNode = head;
+
+    while (currentNode.nextNode !== null) {
+      counter++
+      currentNode = currentNode.nextNode
+      
+      if (counter === index) {
+        return currentNode
+      }
+    }
+    
+
+    return "not found!"
+  }
+
   return {
     append,
     head,
     prepend,
-    length
+    length,
+    tail,
+    findIndex
   }
 }
 
@@ -52,12 +81,13 @@ const NodeFactory = (value = null, nextNode = null) => {
   }
 }
 
-const list = LinkedListFactory()
-list.prepend('stuff')
-list.prepend('stuff1')
-list.prepend('stuff1')
-list.prepend('stuff1')
+const list = LinkedListFactory('head!')
+list.prepend('3')
+list.prepend('2')
+list.prepend('1')
+list.append('4')
 
 
 console.log(list.head)
 console.log(list.length())
+console.log(list.findIndex(4))
